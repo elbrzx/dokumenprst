@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Manajemen Surat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="login">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username"><br><br>
+    <input type="password" id="password" placeholder="Password"><br><br>
+    <button onclick="login()">Login</button>
+  </div>
+
+  <div id="main" class="hidden">
+    <nav>
+      <button onclick="showSection('suratMasuk')">Surat Masuk</button>
+      <button onclick="showSection('suratKeluar')">Surat Keluar</button>
+      <button onclick="showSection('dokumen')">Dokumen</button>
+    </nav>
+
+    <section id="suratMasuk" class="hidden">
+      <h3>Surat Masuk</h3>
+      <input type="text" id="smCari" placeholder="Cari...">
+      <button onclick="getData('masuk')">Cari</button>
+      <br><br>
+      <input id="smPengirim" placeholder="Pengirim">
+      <input id="smPerihal" placeholder="Perihal">
+      <button onclick="submitData('masuk')">Input</button>
+      <div id="dataSuratMasuk"></div>
+    </section>
+
+    <section id="suratKeluar" class="hidden">
+      <h3>Surat Keluar</h3>
+      <input type="text" id="skCari" placeholder="Cari...">
+      <button onclick="getData('keluar')">Cari</button>
+      <br><br>
+      <input id="skTujuan" placeholder="Tujuan">
+      <input id="skPerihal" placeholder="Perihal">
+      <button onclick="submitData('keluar')">Input</button>
+      <div id="dataSuratKeluar"></div>
+    </section>
+
+    <section id="dokumen" class="hidden">
+      <h3>Dokumen</h3>
+      <input type="text" id="dokCari" placeholder="Cari...">
+      <button onclick="getData('dokumen')">Cari</button>
+      <br><br>
+      <input id="dokJudul" placeholder="Judul">
+      <input id="dokKeterangan" placeholder="Keterangan">
+      <button onclick="submitData('dokumen')">Input</button>
+      <div id="dataDokumen"></div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
