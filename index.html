@@ -2,57 +2,78 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <title>Manajemen Surat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manajemen Dokumen Dashboard</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <div id="login">
-    <h2>Login</h2>
-    <input type="text" id="username" placeholder="Username"><br><br>
-    <input type="password" id="password" placeholder="Password"><br><br>
-    <button onclick="login()">Login</button>
+  <div id="login-page" class="page-container">
+    <div class="login-box">
+      <h2>Login</h2>
+      <input type="text" id="username" placeholder="Username">
+      <input type="password" id="password" placeholder="Password">
+      <button onclick="login()">Login</button>
+    </div>
   </div>
 
-  <div id="main" class="hidden">
-    <nav>
-      <button onclick="showSection('suratMasuk')">Surat Masuk</button>
-      <button onclick="showSection('suratKeluar')">Surat Keluar</button>
-      <button onclick="showSection('dokumen')">Dokumen</button>
-    </nav>
+  <div id="dashboard-page" class="page-container hidden">
+    <aside class="sidebar">
+      <h1 class="logo">Manajemen Dokumen</h1>
+      <nav class="sidebar-nav">
+        <button class="nav-button active" onclick="showSection('suratMasuk', this)">Surat Masuk</button>
+        <button class="nav-button" onclick="showSection('suratKeluar', this)">Surat Keluar</button>
+        <button class="nav-button" onclick="showSection('dokumen', this)">Dokumen</button>
+      </nav>
+    </aside>
 
-    <section id="suratMasuk" class="hidden">
-      <h3>Surat Masuk</h3>
-      <input type="text" id="smCari" placeholder="Cari...">
-      <button onclick="getData('masuk')">Cari</button>
-      <br><br>
-      <input id="smPengirim" placeholder="Pengirim">
-      <input id="smPerihal" placeholder="Perihal">
-      <button onclick="submitData('masuk')">Input</button>
-      <div id="dataSuratMasuk"></div>
-    </section>
+    <main class="main-content">
+      <header class="main-header">
+        <h2 id="section-title">Surat Masuk</h2>
+      </header>
 
-    <section id="suratKeluar" class="hidden">
-      <h3>Surat Keluar</h3>
-      <input type="text" id="skCari" placeholder="Cari...">
-      <button onclick="getData('keluar')">Cari</button>
-      <br><br>
-      <input id="skTujuan" placeholder="Tujuan">
-      <input id="skPerihal" placeholder="Perihal">
-      <button onclick="submitData('keluar')">Input</button>
-      <div id="dataSuratKeluar"></div>
-    </section>
+      <div class="content-area">
+        <section id="suratMasuk" class="content-section">
+          <div class="form-container">
+            <input id="smPengirim" placeholder="Pengirim">
+            <input id="smPerihal" placeholder="Perihal">
+            <button onclick="submitData('masuk')">Input Data</button>
+          </div>
+          <div class="search-container">
+            <input type="text" id="smCari" placeholder="Cari surat masuk...">
+            <button onclick="getData('masuk')">Cari</button>
+          </div>
+          <div id="dataSuratMasuk" class="data-table-container"></div>
+        </section>
 
-    <section id="dokumen" class="hidden">
-      <h3>Dokumen</h3>
-      <input type="text" id="dokCari" placeholder="Cari...">
-      <button onclick="getData('dokumen')">Cari</button>
-      <br><br>
-      <input id="dokJudul" placeholder="Judul">
-      <input id="dokKeterangan" placeholder="Keterangan">
-      <button onclick="submitData('dokumen')">Input</button>
-      <div id="dataDokumen"></div>
-    </section>
+        <section id="suratKeluar" class="content-section hidden">
+          <div class="form-container">
+            <input id="skTujuan" placeholder="Tujuan">
+            <input id="skPerihal" placeholder="Perihal">
+            <button onclick="submitData('keluar')">Input Data</button>
+          </div>
+          <div class="search-container">
+            <input type="text" id="skCari" placeholder="Cari surat keluar...">
+            <button onclick="getData('keluar')">Cari</button>
+          </div>
+          <div id="dataSuratKeluar" class="data-table-container"></div>
+        </section>
+
+        <section id="dokumen" class="content-section hidden">
+          <div class="form-container">
+            <input id="dokJudul" placeholder="Judul Dokumen">
+            <input id="dokKeterangan" placeholder="Keterangan">
+            <button onclick="submitData('dokumen')">Input Data</button>
+          </div>
+          <div class="search-container">
+            <input type="text" id="dokCari" placeholder="Cari dokumen...">
+            <button onclick="getData('dokumen')">Cari</button>
+          </div>
+          <div id="dataDokumen" class="data-table-container"></div>
+        </section>
+      </div>
+    </main>
   </div>
 
   <script src="script.js"></script>
