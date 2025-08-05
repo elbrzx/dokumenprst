@@ -1,30 +1,161 @@
+:root {
+    --primary-color: #FFA500; /* Orange */
+    --secondary-color: #F2F2F2; /* Light Gray */
+    --dark-color: #333;
+    --light-color: #fff;
+    --font-size: 14px;
+}
+
 body {
-  font-family: sans-serif;
-  padding: 20px;
+    font-family: Arial, sans-serif;
+    font-size: var(--font-size);
+    margin: 0;
+    padding: 0;
+    background-color: var(--secondary-color);
+    color: var(--dark-color);
 }
 
 .hidden {
-  display: none;
+    display: none !important;
+}
+
+header {
+    background-color: var(--light-color);
+    padding: 10px 20px;
+    border-bottom: 2px solid var(--primary-color);
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
+    color: var(--primary-color);
+}
+
+nav {
+    margin-top: 10px;
 }
 
 nav button {
-  margin: 5px;
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 8px 12px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.9em;
 }
 
-input {
-  margin: 5px 0;
-  padding: 5px;
+nav button.active {
+    background-color: var(--primary-color);
+    color: var(--light-color);
 }
 
-button {
-  padding: 5px 10px;
-  cursor: pointer;
+main {
+    padding: 20px;
 }
 
-section {
-  margin-top: 20px;
+section h2 {
+    font-size: 1.2em;
+    color: var(--dark-color);
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    margin-top: 0;
 }
 
-#dataSuratMasuk, #dataSuratKeluar, #dataDokumen {
-  margin-top: 15px;
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--light-color);
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+}
+
+form {
+    background-color: var(--light-color);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+textarea,
+.choices__input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: var(--font-size);
+}
+
+textarea {
+    resize: vertical;
+}
+
+.signature-pad-container {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    height: 200px;
+}
+
+#signature-pad {
+    width: 100%;
+    height: 100%;
+}
+
+button[type="submit"], button[type="button"] {
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    border: none;
+}
+
+button[type="submit"] {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+}
+
+#clear-signature-btn {
+    background-color: #6c757d;
+    color: var(--light-color);
+    margin-top: 10px;
+}
+
+/* Choices.js custom styles */
+.choices__inner {
+    background-color: white;
+    font-size: var(--font-size);
+}
+.choices[data-type*="select-multiple"] .choices__button, .choices[data-type*="text"] .choices__button {
+    border-left: 1px solid #ccc;
+    background-image: url('data:image/svg+xml;utf8,<svg width="10" height="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l8 8M9 1l-8 8" stroke="%23999" stroke-width="2" fill="none"/></svg>');
+    background-size: 8px;
 }

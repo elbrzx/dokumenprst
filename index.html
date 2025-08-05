@@ -1,60 +1,81 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Manajemen Surat</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doc Expedition</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"/>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div id="login">
-    <h2>Login</h2>
-    <input type="text" id="username" placeholder="Username"><br><br>
-    <input type="password" id="password" placeholder="Password"><br><br>
-    <button onclick="login()">Login</button>
-  </div>
+    <header>
+        <h1>Doc Expedition</h1>
+        <nav>
+            <button id="show-list-btn" class="active">Document List</button>
+            <button id="show-form-btn">Expedition</button>
+        </nav>
+    </header>
 
-  <div id="main" class="hidden">
-    <nav>
-      <button onclick="showSection('suratMasuk')">Surat Masuk</button>
-      <button onclick="showSection('suratKeluar')">Surat Keluar</button>
-      <button onclick="showSection('dokumen')">Dokumen</button>
-    </nav>
+    <main>
+        <section id="document-list-view">
+            <h2>Document List</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Agenda No.</th>
+                            <th>Sender</th>
+                            <th>Subject</th>
+                            <th>Position</th>
+                        </tr>
+                    </thead>
+                    <tbody id="document-list-body">
+                        <!-- Rows will be inserted here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
-    <section id="suratMasuk" class="hidden">
-      <h3>Surat Masuk</h3>
-      <input type="text" id="smCari" placeholder="Cari...">
-      <button onclick="getData('masuk')">Cari</button>
-      <br><br>
-      <input id="smPengirim" placeholder="Pengirim">
-      <input id="smPerihal" placeholder="Perihal">
-      <button onclick="submitData('masuk')">Input</button>
-      <div id="dataSuratMasuk"></div>
-    </section>
+        <section id="expedition-form-view" class="hidden">
+            <h2>Expedition Form</h2>
+            <form id="expedition-form">
+                <div class="form-group">
+                    <label for="agenda-no">Agenda No.</label>
+                    <select id="agenda-no" multiple></select>
+                </div>
+                <div class="form-group">
+                    <label for="recipient">Recipient</label>
+                    <input type="text" id="recipient" required>
+                </div>
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="time">Time</label>
+                    <input type="time" id="time" required>
+                </div>
+                <div class="form-group">
+                    <label for="notes">Notes</label>
+                    <textarea id="notes" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Signature</label>
+                    <div class="signature-pad-container">
+                        <canvas id="signature-pad"></canvas>
+                    </div>
+                    <button type="button" id="clear-signature-btn">Clear</button>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Submit Expedition</button>
+                </div>
+            </form>
+        </section>
+    </main>
 
-    <section id="suratKeluar" class="hidden">
-      <h3>Surat Keluar</h3>
-      <input type="text" id="skCari" placeholder="Cari...">
-      <button onclick="getData('keluar')">Cari</button>
-      <br><br>
-      <input id="skTujuan" placeholder="Tujuan">
-      <input id="skPerihal" placeholder="Perihal">
-      <button onclick="submitData('keluar')">Input</button>
-      <div id="dataSuratKeluar"></div>
-    </section>
-
-    <section id="dokumen" class="hidden">
-      <h3>Dokumen</h3>
-      <input type="text" id="dokCari" placeholder="Cari...">
-      <button onclick="getData('dokumen')">Cari</button>
-      <br><br>
-      <input id="dokJudul" placeholder="Judul">
-      <input id="dokKeterangan" placeholder="Keterangan">
-      <button onclick="submitData('dokumen')">Input</button>
-      <div id="dataDokumen"></div>
-    </section>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
